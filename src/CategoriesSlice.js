@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import initialCategories from './data.json'; // Ensure correct path to your JSON file
+import initialCategories from './data.json';
 
 const categoriesSlice = createSlice({
   name: 'categories',
-  initialState: initialCategories.categories, // Use JSON data as initial state
+  initialState: initialCategories.categories, 
   reducers: {
     addWidget: (state, action) => {
       const { categoryIndex, widget } = action.payload;
