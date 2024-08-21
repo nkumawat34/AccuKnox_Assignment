@@ -1,0 +1,120 @@
+{
+    "categories": [
+      {
+        "categoryName": "Category 1",
+        "widgets": [
+          {
+            "name": "Widget 1",
+            "text": "Description for Widget 1",
+            "metrics": {
+              "Metric A": 30,
+              "Metric B": 40,
+              "Metric C": 30
+            }
+          },
+          {
+            "name": "Widget 2",
+            "text": "Description for Widget 2",
+            "metrics": {
+              "Metric A": 25,
+              "Metric B": 50,
+              "Metric C": 25
+            }
+          }
+        ]
+      },
+      {
+        "categoryName": "Category 2",
+        "widgets": [
+          {
+            "name": "Widget 3",
+            "text": "Description for Widget 3",
+            "metrics": {
+              "Metric A": 20,
+              "Metric B": 60,
+              "Metric C": 20
+            }
+          },
+          {
+            "name": "Widget 4",
+            "text": "Description for Widget 4",
+            "metrics": {
+              "Metric A": 40,
+              "Metric B": 30,
+              "Metric C": 30
+            }
+          }
+        ]
+      },
+      {
+        "categoryName": "Category 3",
+        "widgets": [
+          {
+            "name": "Widget 5",
+            "text": "Description for Widget 5",
+            "metrics": {
+              "Metric A": 50,
+              "Metric B": 25,
+              "Metric C": 25
+            }
+          },
+          {
+            "name": "Widget 6",
+            "text": "Description for Widget 6",
+            "metrics": {
+              "Metric A": 35,
+              "Metric B": 35,
+              "Metric C": 30
+            }
+          }
+        ]
+      },
+      {
+        "categoryName": "Category 4",
+        "widgets": [
+          {
+            "name": "Widget 7",
+            "text": "Description for Widget 7",
+            "metrics": {
+              "Metric A": 45,
+              "Metric B": 30,
+              "Metric C": 25
+            }
+          },
+          {
+            "name": "Widget 8",
+            "text": "Description for Widget 8",
+            "metrics": {
+              "Metric A": 20,
+              "Metric B": 50,
+              "Metric C": 30
+            }
+          }
+        ]
+      },
+      {
+        "categoryName": "Category 5",
+        "widgets": [
+          {
+            "name": "Widget 9",
+            "text": "Description for Widget 9",
+            "metrics": {
+              "Metric A": 30,
+              "Metric B": 30,
+              "Metric C": 40
+            }
+          },
+          {
+            "name": "Widget 10",
+            "text": "Description for Widget 10",
+            "metrics": {
+              "Metric A": 25,
+              "Metric B": 25,
+              "Metric C": 50
+            }
+          }
+        ]
+      }
+    ]
+  }
+  
