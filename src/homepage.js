@@ -16,10 +16,9 @@ export default function Homepage() {
       'Metric C': ''
     }
   });
-  const [showForm, setShowForm] = useState(null); // Track which category form is open
-  const [searchTerms, setSearchTerms] = useState({}); // Track search terms for each category
+  const [showForm, setShowForm] = useState(null);
+  const [searchTerms, setSearchTerms] = useState({});
 
-  // Function to generate pie chart data for a widget
   const getPieDataForWidget = (widget) => {
     const labels = Object.keys(widget.metrics);
     const data = Object.values(widget.metrics);
@@ -35,7 +34,6 @@ export default function Homepage() {
     };
   };
 
-  // Function to handle adding a new widget
   const handleAddWidget = (categoryIndex) => {
     dispatch(addWidget({ categoryIndex, widget: newWidget }));
     setNewWidget({
@@ -47,15 +45,13 @@ export default function Homepage() {
         'Metric C': ''
       }
     });
-    setShowForm(null); // Close the form after adding the widget
+    setShowForm(null);
   };
 
-  // Function to handle removing a widget
   const handleRemoveWidget = (categoryIndex, widgetIndex) => {
     dispatch(removeWidget({ categoryIndex, widgetIndex }));
   };
 
-  // Handle input change for the widget form
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name.startsWith('metrics')) {
@@ -75,7 +71,6 @@ export default function Homepage() {
     }
   };
 
-  // Handle search input change for a specific category
   const handleSearchChange = (categoryIndex, e) => {
     const { value } = e.target;
     setSearchTerms((prevTerms) => ({
@@ -84,7 +79,6 @@ export default function Homepage() {
     }));
   };
 
-  // Filter widgets based on search term for a specific category
   const filteredWidgets = (categoryIndex) => {
     const searchTerm = searchTerms[categoryIndex] || '';
     return categories[categoryIndex].widgets.filter(widget =>
@@ -93,10 +87,39 @@ export default function Homepage() {
     );
   };
 
-  // Close the widget form
   const closeForm = () => {
     setShowForm(null);
   };
+
+  const AddWidgetButton = ({ onClick }) => (
+    <div
+      style={{
+        border: '1px solid #ccc',
+        borderRadius: '8px',
+        padding: '20px',
+        width: '300px',
+        height: '200px',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}
+    >
+      <button
+        onClick={onClick}
+        style={{
+          padding: '10px 20px',
+          backgroundColor: '#36A2EB',
+          color: '#fff',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer'
+        }}
+      >
+        Add Widget
+      </button>
+    </div>
+  );
 
   return (
     <div style={{ padding: '20px', display: 'flex', flexDirection: 'column' }}>
@@ -145,8 +168,8 @@ export default function Homepage() {
             </div>
 
             <div className="search-container" style={{display: "flex",
-  justifyContent: "center",
-  marginBottom: "10px"}}>
+              justifyContent: "center",
+              marginBottom: "10px"}}>
               <input
                 type="text"
                 placeholder="Search widgets..."
@@ -154,10 +177,10 @@ export default function Homepage() {
                 onChange={(e) => handleSearchChange(index, e)}
                 className="search-input"
                 style={{ padding: "10px",
-                    border: "1px solid #ccc",
-                    borderRadius: "5px",
-                    width: "100%" ,
-                    maxWidth: "400px" }}
+                  border: "1px solid #ccc",
+                  borderRadius: "5px",
+                  width: "100%" ,
+                  maxWidth: "400px" }}
               />
             </div>
 
@@ -170,11 +193,11 @@ export default function Homepage() {
                     left: 0,
                     width: '100vw',
                     height: '100vh',
-                    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
-                    backdropFilter: 'blur(5px)', // Apply blur effect
-                    zIndex: 999, // Ensure it covers the content
+                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                    backdropFilter: 'blur(5px)',
+                    zIndex: 999,
                   }}
-                  onClick={closeForm} // Close popup when clicking outside
+                  onClick={closeForm}
                 ></div>
                 <div
                   style={{
@@ -227,7 +250,7 @@ export default function Homepage() {
                       />
                     </div>
                     <div style={{ marginBottom: '10px' }}>
-                      <label >Description:</label>
+                      <label>Description:</label>
                       <input
                         type="text"
                         name="text"
@@ -295,7 +318,6 @@ export default function Homepage() {
                 <div
                   key={widgetIndex}
                   style={{
-                    position: 'relative',
                     border: '1px solid #ccc',
                     borderRadius: '8px',
                     padding: '20px',
@@ -306,6 +328,13 @@ export default function Homepage() {
                     alignItems: 'center'
                   }}
                 >
+                  <h3>{widget.name}</h3>
+                  <Pie
+                    data={getPieDataForWidget(widget)}
+                    width={300}
+                    height={300}
+                  />
+                  <p>{widget.text}</p>
                   <button
                     onClick={() => handleRemoveWidget(index, widgetIndex)}
                     style={{
@@ -321,15 +350,47 @@ export default function Homepage() {
                   >
                     &times;
                   </button>
-                  <h3>{widget.name}</h3>
-                  <Pie
-                    data={getPieDataForWidget(widget)}
-                    width={300}
-                    height={300}
-                  />
-                  <p>{widget.text}</p>
                 </div>
-              ))}
+                
+              ))
+              
+              }
+            <div
+      style={{
+        border: '1px solid #ccc',
+        borderRadius: '8px',
+        padding: '20px',
+        width: '300px',
+        height: '410px',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#f0f0f0',
+        textAlign: 'center',
+        cursor: 'pointer',
+        position: 'relative'
+      }}
+      onClick={()=>addWidget()}
+    >
+      <button
+        style={{
+          
+          padding: '10px 20px',
+          backgroundColor: '#36A2EB',
+          color: '#fff',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer'
+        }}
+        onClick={() => setShowForm(index)}
+      >
+        Add Widget
+      </button>
+    </div>
+              {filteredWidgets(index).length === 0 && (
+                <AddWidgetButton onClick={() => setShowForm(index)} />
+              )}
             </div>
           </div>
         </div>
